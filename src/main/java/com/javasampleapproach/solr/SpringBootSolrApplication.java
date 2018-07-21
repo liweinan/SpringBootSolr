@@ -13,41 +13,50 @@ import com.javasampleapproach.solr.repo.CustomerRepository;
 @SpringBootApplication
 public class SpringBootSolrApplication implements CommandLineRunner {
 
-	@Autowired
-	private CustomerRepository customerRepository;
+    @Autowired
+    private CustomerRepository customerRepository;
 
-	@Override
-	public void run(String... args) throws Exception {
+    @Override
+    public void run(String... args) throws Exception {
 
-		customerRepository.deleteAll();
+        customerRepository.deleteAll();
 
-		// Store customers
-		customerRepository.saveAll(Arrays.asList(new Customer("1", "Jack", 20),
-											new Customer("2", "Adam", 24),
-											new Customer("3", "Kim", 27), 
-											new Customer("4", "David", 30), 
-											new Customer("5", "Peter", 21)));
+        // Store customers
+        customerRepository.saveAll(Arrays.asList(new Customer("1", "Jack", "jojo", 20),
+                new Customer("2", "Adam", "ada", 24),
+                new Customer("3", "Kim", "kiki", 27),
+                new Customer("4", "David", "dave", 30),
+                new Customer("5", "Peter", "pete", 21)));
 
-		// Fetch all customers
-		System.out.println("--------------------------------");
-		System.out.println("Select all Customers:");
-		System.out.println("--------------------------------");
+        // Fetch all customers
+        System.out.println("--------------------------------");
+        System.out.println("Select all Customers:");
+        System.out.println("--------------------------------");
 
-		for (Customer product : this.customerRepository.findAll()) {
-			System.out.println(product);
-		}
+        for (Customer product : this.customerRepository.findAll()) {
+            System.out.println(product);
+        }
 
-		// Find customer by Name ends with 'm'
-		System.out.println("--------------------------------");
-		System.out.println("Find Customers that have names EndsWith m:");
-		System.out.println("--------------------------------");
+        // Find customer by Name ends with 'm'
+        System.out.println("--------------------------------");
+        System.out.println("Find Customers that have names EndsWith m:");
+        System.out.println("--------------------------------");
 
-		for (Customer customer : this.customerRepository.findByNameEndsWith("m")) {
-			System.out.println(customer);
-		}
-	}
+        for (Customer customer : this.customerRepository.findByNameEndsWith("m")) {
+            System.out.println(customer);
+        }
 
-	public static void main(String[] args) throws Exception {
-		SpringApplication.run(SpringBootSolrApplication.class, args);
-	}
+        // Find customer by Name ends with 'm'
+        System.out.println("--------------------------------");
+        System.out.println("Find Customers that have nicknames EndsWith o:");
+        System.out.println("--------------------------------");
+
+        for (Customer customer : this.customerRepository.findByNicknameEndsWith("o")) {
+            System.out.println(customer);
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(SpringBootSolrApplication.class, args);
+    }
 }

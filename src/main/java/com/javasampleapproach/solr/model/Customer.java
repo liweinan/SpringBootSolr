@@ -12,6 +12,9 @@ public class Customer {
 
 	@Field
 	private String name;
+
+	@Field
+	private String nickname;
 	
 	@Field
 	private Integer age;
@@ -19,9 +22,10 @@ public class Customer {
 	public Customer() {
 	}
 	
-	public Customer(String id, String name, Integer age){
+	public Customer(String id, String name, String nickname, Integer age){
 		this.id = id;
 		this.name = name;
+		this.nickname = nickname;
 		this.age = age;
 	}
 	
@@ -48,7 +52,15 @@ public class Customer {
 	public Integer getAge(){
 		return this.age;
 	}
-	
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + this.id + ", name=" + this.name + ", age=" + this.age + "]";
